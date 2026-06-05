@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="InboxQ">
+  <rect width="512" height="512" rx="96" fill="#f7f6f2"/>
+  <rect x="96" y="142" width="320" height="232" rx="44" fill="#1c1f23"/>
+  <path d="M119 186h312l-96 94c-22 21-47 32-75 32s-53-11-75-32z" fill="#4b9b74"/>
+  <path d="M122 358l98-99 32 30-82 83h-28c-11 0-19-8-20-14z" fill="#3868d6"/>
+  <path d="M390 358l-98-99-32 30 82 83h28c11 0 19-8 20-14z" fill="#b55d3b"/>
+  <circle cx="365" cy="166" r="44" fill="#ffffff"/>
+  <path d="M365 139a27 27 0 1 0 0 54 27 27 0 0 0 0-54zm0 14a13 13 0 1 1 0 26 13 13 0 0 1 0-26z" fill="#1c1f23"/>
+</svg>

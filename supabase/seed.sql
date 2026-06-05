@@ -1,0 +1,4 @@
+-- Demo seed placeholder for local Supabase.
+-- The running prototype uses lib/demo-data.ts so it works without OAuth or a database.
+-- Once Supabase Auth is enabled, create a user first, then copy the demo objects from
+-- lib/demo-data.ts into the normalized tables created by 0001_initial_schema.sql.
