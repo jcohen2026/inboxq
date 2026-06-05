@@ -16,14 +16,15 @@ const config: Config = {
         ember: "#b55d3b",
         palms: {
           black: "#0a0a0a",
-          gold: "#d4af37",
-          amber: "#ffbf00",
-          panel: "#161616"
+          gold: "#D4AF37",
+          amber: "#FFBF00",
+          panel: "#161616",
+          accent: "#2D2412"
         }
       },
       boxShadow: {
         quiet: "0 1px 2px rgba(24, 27, 31, 0.08)",
-        gold: "0 0 15px rgba(212, 175, 55, 0.1)"
+        gold: "0 0 20px rgba(212, 175, 55, 0.15)"
       }
     }
   },
