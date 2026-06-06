@@ -2,7 +2,9 @@ import { google } from "googleapis";
 
 export const GOOGLE_SCOPES = [
   "https://www.googleapis.com/auth/gmail.readonly",
-  "https://www.googleapis.com/auth/calendar.readonly"
+  "https://www.googleapis.com/auth/calendar.readonly",
+  "https://www.googleapis.com/auth/userinfo.email",
+  "https://www.googleapis.com/auth/userinfo.profile"
 ];
 
 export function getGoogleRedirectUri() {
@@ -30,7 +32,7 @@ export function getGoogleAuthorizationUrl(state: string): string | null {
 
   return client.generateAuthUrl({
     access_type: "offline",
-    prompt: "consent",
+    prompt: "select_account",
     scope: GOOGLE_SCOPES,
     state
   });
@@ -60,4 +62,11 @@ export function getGoogleClientWithTokens(tokens: {
 
   client.setCredentials(tokens);
   return client;
+}
+
+export async function getGoogleUserProfile(tokens: any) {
+  const client = getGoogleClientWithTokens(tokens);
+  const oauth2 = google.oauth2({ version: "v2", auth: client });
+  const { data } = await oauth2.userinfo.get();
+  return data;
 }
