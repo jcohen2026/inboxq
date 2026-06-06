@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { exchangeGoogleCodeForTokens } from "@/lib/integrations/google-oauth";
+import { exchangeGoogleCodeForTokens, getGoogleUserProfile } from "@/lib/integrations/google-oauth";
 
 export async function GET(request: NextRequest) {
   const url = new URL(request.url);
@@ -18,13 +18,26 @@ export async function GET(request: NextRequest) {
 
   try {
     const tokens = await exchangeGoogleCodeForTokens(code);
+    
+    // Fetch profile to identify the account
+    const profile = await getGoogleUserProfile(tokens);
+    
+    // In a live app, you would upsert this to connected_accounts here:
+    // await upsertConnectedAccount({ 
+    //   email: profile.email, 
+    //   tokens, 
+    //   displayName: profile.name 
+    // });
+
     settingsUrl.searchParams.set("google", "oauth_received");
-    settingsUrl.searchParams.set("access", tokens.access_token ? "1" : "0");
+    settingsUrl.searchParams.set("email", profile.email || "");
     settingsUrl.searchParams.set("refresh", tokens.refresh_token ? "1" : "0");
+    
     const response = NextResponse.redirect(settingsUrl);
     response.cookies.delete("google_oauth_state");
     return response;
-  } catch {
+  } catch (error: any) {
+    console.error("OAuth Exchange Error:", error.message);
     settingsUrl.searchParams.set("google", "exchange_failed");
     const response = NextResponse.redirect(settingsUrl);
     response.cookies.delete("google_oauth_state");
