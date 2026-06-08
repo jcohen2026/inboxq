@@ -14,7 +14,7 @@ export default async function SettingsPage({ searchParams }: SettingsPageProps) 
   const params = searchParams ? await searchParams : {};
   const context = getDemoContext();
   const slack = getSlackConnectionStatus();
-  const demoMode = process.env.NEXT_PUBLIC_DEMO_MODE !== "false";
+  const demoMode = process.env.NEXT_PUBLIC_DEMO_MODE === "true";
 
   return (
     <div className="mx-auto max-w-7xl">
