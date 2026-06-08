@@ -73,11 +73,13 @@ export function PanelHeader({
 export function Badge({
   children,
   tone = "zinc",
-  variant = "default"
+  variant = "default",
+  className
 }: {
   children: ReactNode;
   tone?: "zinc" | "blue" | "green" | "amber" | "red" | "purple" | "gold";
   variant?: "default" | "palms";
+  className?: string;
 }) {
   const tones = {
     zinc: "border-zinc-200 bg-zinc-50 text-zinc-700",
@@ -102,7 +104,7 @@ export function Badge({
   const activeTones = variant === "palms" ? palmsTones : tones;
 
   return (
-    <span className={cn("inline-flex items-center rounded border px-2 py-0.5 text-xs font-medium", activeTones[tone as keyof typeof activeTones])}>
+    <span className={cn("inline-flex items-center rounded border px-2 py-0.5 text-xs font-medium", activeTones[tone as keyof typeof activeTones], className)}>
       {children}
     </span>
   );
