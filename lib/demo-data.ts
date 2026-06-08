@@ -16,7 +16,7 @@ import type {
 import { atTime, minutesFromNow } from "./time.ts";
 
 const now = new Date();
-const demoMode = process.env.NEXT_PUBLIC_DEMO_MODE !== "false";
+const demoMode = process.env.NEXT_PUBLIC_DEMO_MODE === "true";
 
 export const connectedAccounts: ConnectedAccount[] = [
   {
